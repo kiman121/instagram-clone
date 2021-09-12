@@ -18,7 +18,7 @@ class Profile(models.Model):
     profile_image = models.ImageField(
         blank=True, null=True, upload_to='profiles/', default='profiles/user-default.png')
     website = models.CharField(max_length=200, blank=True, null=True)
-    gender = models.ManyToManyField('Gender', blank=True)
+    gender = models.ForeignKey('Gender',  on_delete=models.CASCADE, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)

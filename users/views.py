@@ -4,15 +4,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 
-from .models import Profile
-from .forms import CustomUserCreationForm
-
-from django.http import HttpResponse
+from .models import Profile, Gender
+from .forms import CustomUserCreationForm, ProfileForm
 # Create your views here.
 
 
 def loginUser(request):
-    page = 'login'
+    if request.user.is_authenticated:
+        return redirect('explore')
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -29,8 +29,14 @@ def loginUser(request):
         else:
             messages.error(request, 'Username or password is incorrect')
 
-    context = {'page': page}
+    context = {'page': 'login'}
     return render(request, 'users/login_register.html', context)
+
+
+def logoutUser(request):
+    logout(request)
+    messages.info(request, 'User was logged out!')
+    return redirect('login')
 
 
 def registerUser(request):
@@ -48,11 +54,35 @@ def registerUser(request):
             login(request, user)
             return redirect('explore')
         else:
-            messages.error(request, 'An error has occured during registration!')
+            messages.error(
+                request, 'An error has occured during registration!')
 
     return render(request, 'users/login_register.html')
 
 
 @login_required(login_url='login')
-def explore(request):
-    return HttpResponse("you are in home page")
+def userProfile(request):
+    profile = request.user.profile
+    context = {
+        'profile': profile
+    }
+    return render(request, 'users/profile.html', context)
+
+
+@login_required(login_url='login')
+def editProfile(request):
+    profile = request.user.profile
+    form = ProfileForm(instance=profile)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+
+    context = {
+        'form': form,
+        'profile': profile
+    }
+    return render(request, 'users/profile_form.html', context)

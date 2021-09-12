@@ -44,7 +44,10 @@
     
         });
 
-    
+        $(document).on('click', 'edit-user-profile', function(e){
+            e.preventDefault()
+            $("#edit_user_profile").modal("show");
+        });
     // ------------------ End Document ------------------ //
     });
     
