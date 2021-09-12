@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="text-2xl leading-none text-gray-900 tracking-tight mt-3"> Account Setting </h1>
+    <div class="grid lg:grid-cols-3 mt-12 gap-8">
+        <div class="bg-white rounded-md lg:shadow-lg shadow col-span-2">
+            <form  action="{% url 'edit-profile' %}" method="POST" enctype="multipart/form-data">
+               <div class="grid grid-cols-2 gap-3 lg:p-6 p-4">
+                    {% csrf_token %}
+                    <div>
+                        <label for=""> {{form.name.label}}</label>
+                        {{form.name}}
+                    </div>
+                    <div>
+                        <label for=""> {{form.username.label}}</label>
+                        {{form.username}}
+                    </div>
+                    <div>
+                        <label for=""> {{form.gender.label}}</label>
+                        {{form.gender}}
+                    </div>
+                    <div>
+                        <label for=""> {{form.phone_number.label}}</label>
+                        {{form.phone_number}}
+                    </div>
+                    <div class="col-span-2">
+                        <label for=""> {{form.bio.label}}</label>
+                        {{form.bio}}
+                    </div>
+                    <div class="col-span-2">
+                        <label for=""> {{form.email.label}}</label>
+                        {{form.email}}
+                    </div>
+                    <div class="col-span-2">
+                        <label for=""> {{form.website.label}}</label>
+                        {{form.website}}
+                    </div>
+                    <div class="col-span-2">
+                        <label for=""> {{form.profile_image.label}}</label>
+                        {{form.profile_image}}
+                    </div>
+                </div>
+                <div class="bg-gray-10 p-6 pt-0 flex justify-end space-x-3">
+                    <button class="p-2 px-4 rounded bg-gray-50 text-red-500"> Cancel </button>
+                    <button type="submit" class="button bg-blue-700"> Save </button>
+                </div>
+            </form> 
+        </div>
+    </div>
+{% endblock content %}
