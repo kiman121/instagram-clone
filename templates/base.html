@@ -2,6 +2,7 @@
 {% load static %}
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,26 +10,56 @@
     <!-- icons
     ================================================== -->
     <link rel="stylesheet" href="{% static 'css/icons.css'%}">
-
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
     <!-- CSS 
     ================================================== -->
     <link rel="stylesheet" href="{% static 'css/uikit.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/tailwind-dark.css' %}">
+    <style>
+        @media (min-width: 1024px) {
+            header .header_inner {
+                max-width: 980px;
+            }
 
+            .pro-container {
+                max-width: 860px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="wrapper" class="flex flex-col justify-between h-screen">
+    <!-- wrapper and header section -->
+    {% if request.user.is_authenticated %}
+        <div id="wrapper">
+            {% include 'sidebar.html' %}
+            <div class="main_content">
+                {% include 'header.html' %}
+                <div class="container pro-container m-auto">
+    {% else %}
+        <div id="wrapper" class="flex flex-col justify-between h-screen">  
         {% include 'navbar.html' %}
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                <li{% if message.tags %} class="{{message.tags}}"{%endif%}>{{message}}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {% block content %}{% endblock content %}
+    {% endif %}
+    
+    <!-- flash messages -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{message.tags}}"{%endif%}>{{message}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    <!-- block content -->
+    {% block content %}{% endblock content %}
+    
+    <!-- closing divs -->
+    {% if request.user.is_authenticated %}
     </div>
+    </div>
+    {% else %}
+    </div>
+    {% endif %}
     <!-- Scripts
     ================================================== -->
     <script src="{% static 'js/tippy.all.min.js' %}"></script>
