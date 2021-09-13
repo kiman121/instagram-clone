@@ -5,12 +5,12 @@ import uuid
 
 
 class Post(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, null=True, blank=True)
-    
+    user = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True)
+    title = models.CharField(max_length=200, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     post_image = models.ImageField(upload_to='posts/')
-    tags = models.ManyToManyField('Tag', blank=True)
+    tag = models.ForeignKey('Tag', on_delete=models.CASCADE, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
