@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 
+from posts.forms import PostForm
+from posts.models import Post
 from .models import Profile, Gender
 from .forms import CustomUserCreationForm, ProfileForm
 # Create your views here.
@@ -64,7 +66,10 @@ def registerUser(request):
 def userProfile(request):
     profile = request.user.profile
     context = {
-        'profile': profile
+        'profile': profile,
+        'uploadForm': PostForm(),
+        'posts': Post.objects.filter(user=request.user),
+        # 'tags': Post.objects.order_by('tag').distinct('tag')
     }
     return render(request, 'users/profile.html', context)
 
@@ -83,6 +88,7 @@ def editProfile(request):
 
     context = {
         'form': form,
-        'profile': profile
+        'profile': profile,
+        'uploadForm': PostForm(),
     }
     return render(request, 'users/profile_form.html', context)
