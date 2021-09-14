@@ -1,18 +1,18 @@
-# My Photo Gallery Web Application
-#### A photo gallery app.
+# Instello
+#### An Instagram clone web app.
 
 #### By **Patrick Mwangangi**
 ## Description
-This a nifty application created to serve as a platform where interested users are able to maintain a photo gallery for their favourite photos.
+This web application created was create as a clone of Instagram with a twist. Interested users are able to post their favourite photos as well as follow, comment and like other users photos.
 
 Further to the above usage, this master piece was created as practice on concepts learnt in Python Django (at Moringa School).
 ## Demo
 
-Here is a working live demo : https://ourphotogallery.herokuapp.com/
+Here is a working live demo : https://instelo.herokuapp.com/
 ## Setup/Installaction Requirements
 - Clone the repository (repo).
     ```
-    git clone https://github.com/kiman121/my-gallery.git
+    git clone https://github.com/kiman121/instagram-clone.git
     ```
 - Open the project on VS Code or any editor of choice.
 - Navigate to the projects root directory.
@@ -47,9 +47,9 @@ No Known bugs
 
 ## Support and contact details
 
-If you want to contact us, email us on info@my-gallery.com
+If you want to contact us, email us on info@instagram-clone.com
 
 ### License
 
-[MIT licence](https://github.com/kiman121/my-gallery/blob/master/LICENCE)
+[MIT licence](https://github.com/kiman121/instagram-clone/blob/master/LICENCE)
 Copyright (c) 2021 **My Photo Gallery**
