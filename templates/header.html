@@ -1,14 +1,6 @@
 <header>
     <div class="header_inner">
         <div class="left-side">
-            <!-- Logo -->
-            <div id="logo" class=" uk-hidden@s">
-                <a href="home.html">
-                    <img src="assets/images/logo-mobile.png" alt="">
-                    <img src="assets/images/logo-mobile-light.png" class="logo_inverse">
-                </a>
-            </div>
-
             <div class="triger" uk-toggle="target: #wrapper ; cls: sidebar-active">
                 <i class="uil-bars"></i>
             </div>
@@ -26,9 +18,6 @@
 
         </div>
         <div class="right-side lg:pr-4">
-            <!-- <a href="#upload-modal" uk-toggle>
-                sdbajdbajk
-           </a> -->
              <!-- upload upload-modal -->
             <a href="#"
                 class="bg-pink-500 flex font-bold hidden hover:bg-pink-600 hover:text-white inline-block items-center lg:block max-h-10 mr-4 px-4 py-2 rounded shado text-white">
@@ -60,9 +49,6 @@
                     </div>
 
                 </div>
-                <div class="px-4 py-3 -mx-5 -mb-4 mt-5 border-t text-sm dark:border-gray-500 dark:text-gray-500">
-                    Your Video size Must be Maxmium 999MB
-                </div>
             </div>
             <!-- profile -->
 
@@ -72,9 +58,7 @@
             
             <div uk-drop="mode: click;offset:9" class="header_dropdown profile_dropdown border-t">
                 <ul>
-                    <li><a href="#"> Account setting </a> </li>
-                    <li><a href="#"> Payments </a> </li>
-                    <li><a href="#"> Help </a> </li>
+                    <li><a href="{% url 'profile' %}"> Profile </a> </li>
                     <li><a href="{% url 'logout' %}"> Log Out</a></li>
                 </ul>
             </div>
