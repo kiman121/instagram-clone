@@ -20,14 +20,10 @@
                             <a href="#story-modal" uk-toggle data-postid="{{post.id}}" class="user-post-detail">
                                 <img src="{{post.post_image.url}}" class="w-full h-full absolute object-cover inset-0">
                             </a>
-                            <!-- <a  href="#story-modal" uk-toggle class="absolute flex h-full items-center justify-center w-8 w-full uk-transition-scale-up bg-black bg-opacity-10"> 
-                                <img src="assets/images/icon-play.svg" alt="" class="w-16 h-16">
-                            </a> -->
                             <div class="absolut absolute bottom-0 flex items-center justify-between px-4 py-3 space-x-2 text-white w-full custom-overly1">   
-                                <a href="#">Johnson </a>  
+                                <a href="#">{{post.user.profile.name}} </a>  
                                 <div class="flex space-x-3">  
                                 <a href="#" class="flex items-center"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  150 </a>
-                                <a href="#" class="flex items-center"> <ion-icon name="chatbubble-ellipses" class="mr-1 md hydrated" role="img" aria-label="chatbubble ellipses"></ion-icon> 30 </a>         
                                 </div>        
                             </div>
                         </div>
@@ -50,15 +46,10 @@
                                         <a href="#" class="flex items-center">
                                             <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon> 150
                                         </a>
-                                        <a href="#" class="flex items-center">
-                                            <ion-icon name="chatbubble-ellipses" class="mr-1 md hydrated" role="img" aria-label="chatbubble ellipses">
-                                            </ion-icon> 30
-                                        </a>
                                     </div>
                                 </div>
-                                <h1 class="font-bold text-3xl"> Lorem ipsum dolor sit amet consectetuer adipiscing</h1>
-                                <p> Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet 
-                                    doming id quod mazim placerat facer possim </p>
+                                <h1 class="font-bold text-3xl"> {{post.title}}</h1>
+                                <p>{{post.description}}</p>
                             </div>
                         </div>
                     </div>
@@ -68,14 +59,10 @@
                             <a href="#story-modal" uk-toggle data-postid="{{post.id}}" class="user-post-detail">
                                 <img src="{{post.post_image.url}}" class="w-full h-full absolute object-cover inset-0">
                             </a>
-                            <!-- <a href="#story-modal" uk-toggle class="absolute flex h-full items-center justify-center w-8 w-full uk-transition-scale-up bg-black bg-opacity-10"> 
-                                <img src="assets/images/icon-play.svg" alt="" class="w-16 h-16">
-                            </a> -->
                             <div class="absolut absolute bottom-0 flex items-center justify-between px-4 py-3 space-x-2 text-white w-full custom-overly1">   
-                                <a href="#">James  </a>  
+                                <a href="#">{{post.user.profile.name}}  </a>  
                                 <div class="flex space-x-3">  
                                 <a href="#" class="flex items-center"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  150 </a>
-                                <a href="#" class="flex items-center"> <ion-icon name="chatbubble-ellipses" class="mr-1 md hydrated" role="img" aria-label="chatbubble ellipses"></ion-icon> 30 </a>         
                                 </div>        
                             </div>
                         </div>
@@ -87,10 +74,9 @@
                                 <img src="{{post.post_image.url}}" class="w-full h-full absolute object-cover inset-0 object-cover object-left">
                             </a>
                             <div class="absolut absolute bottom-0 flex items-center justify-between px-4 py-3 space-x-2 text-white w-full custom-overly1">   
-                                <a href="#">Martin  </a>  
+                                <a href="#">{{post.user.profile.name}}  </a>  
                                 <div class="flex space-x-3">  
                                 <a href="#" class="flex items-center"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  150 </a>
-                                <a href="#" class="flex items-center"> <ion-icon name="chatbubble-ellipses" class="mr-1 md hydrated" role="img" aria-label="chatbubble ellipses"></ion-icon> 30 </a>         
                                 </div>        
                             </div>
                         </div>
@@ -102,10 +88,9 @@
                                 <img src="{{post.post_image.url}}" class="w-full h-full absolute object-cover inset-0">
                             </a>
                             <div class="absolut absolute bottom-0 flex items-center justify-between px-4 py-3 space-x-2 text-white w-full custom-overly1">   
-                                <a href="#">Johnson </a>  
+                                <a href="#">{{post.user.profile.name}} </a>  
                                 <div class="flex space-x-3">  
                                 <a href="#" class="flex items-center"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  150 </a>
-                                <a href="#" class="flex items-center"> <ion-icon name="chatbubble-ellipses" class="mr-1 md hydrated" role="img" aria-label="chatbubble ellipses"></ion-icon> 30 </a>         
                                 </div>        
                             </div>
                         </div>
@@ -117,10 +102,9 @@
                                 <img src="{{post.post_image.url}}" class="w-full h-full absolute object-cover inset-0">
                             </a>
                             <div class="absolut absolute bottom-0 flex items-center justify-between px-4 py-3 space-x-2 text-white w-full custom-overly1">   
-                                <a href="#">Jesse  </a>  
+                                <a href="#">{{post.user.profile.name}}  </a>  
                                 <div class="flex space-x-3">  
                                 <a href="#" class="flex items-center"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  150 </a>
-                                <a href="#" class="flex items-center"> <ion-icon name="chatbubble-ellipses" class="mr-1 md hydrated" role="img" aria-label="chatbubble ellipses"></ion-icon> 30 </a>         
                                 </div>        
                             </div>
                         </div>
@@ -130,9 +114,9 @@
         </div>
 
         <!-- Load more-->
-        <div class="flex justify-center mt-6">
+        <!-- <div class="flex justify-center mt-6">
             <a href="#" class="bg-white font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white"> Load more ..</a>
-        </div>
+        </div> -->
 
     </div>
 {% endblock content %}
