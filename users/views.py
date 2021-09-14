@@ -5,9 +5,10 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 
 from posts.forms import PostForm
-from posts.models import Post
+from posts.models import Post, Follow
 from .models import Profile, Gender
 from .forms import CustomUserCreationForm, ProfileForm
+from .email import send_welcome_email
 # Create your views here.
 
 
@@ -45,16 +46,22 @@ def registerUser(request):
     form = CustomUserCreationForm()
 
     if request.method == 'POST':
+
+        name = request.POST['first_name']
+        email = request.POST['email']
         form = CustomUserCreationForm(request.POST)
+
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
 
             messages.success(request, 'User account was created')
+            
+            send_welcome_email(name, email)
 
             login(request, user)
-            return redirect('explore')
+            return redirect('edit-profile')
         else:
             messages.error(
                 request, 'An error has occured during registration!')
@@ -63,13 +70,19 @@ def registerUser(request):
 
 
 @login_required(login_url='login')
-def userProfile(request):
-    profile = request.user.profile
+def userProfile(request, pk):
+    user = User.objects.get(id=pk)
+    profile = user.profile
+    status = Follow.objects.filter(followee=profile.user, follower=request.user).count()
     context = {
         'profile': profile,
         'uploadForm': PostForm(),
         'posts': Post.objects.filter(user=request.user),
-        # 'tags': Post.objects.order_by('tag').distinct('tag')
+        'status':status,
+        'followee_followers_count': Follow.objects.filter(followee=user).count(),
+        'followee_following_count': Follow.objects.filter(follower=user).count(),
+        'user_followers_count': Follow.objects.filter(followee=request.user).count(),
+        'user_following_count': Follow.objects.filter(follower=request.user).count(),
     }
     return render(request, 'users/profile.html', context)
 
@@ -84,7 +97,7 @@ def editProfile(request):
         
         if form.is_valid():
             form.save()
-            return redirect('profile')
+            return redirect('profile', request.user.id)
 
     context = {
         'form': form,
