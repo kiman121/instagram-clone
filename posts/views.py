@@ -5,9 +5,10 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 
 from users.models import Profile
-from .models import Post, Tag
-from .forms import PostForm
-
+from .models import Post, Tag, Comment
+from .forms import PostForm, CommentForm
+from .serializer import CommentSerializer
+from .utils import fetchComments
 # Create your views here.
 
 
@@ -20,6 +21,7 @@ def explore(request):
         'posts':posts,
         'uploadForm': PostForm(),
         'tags': Tag.objects.all(),
+        'commentForm': CommentForm(),
     }
 
     return render(request, 'posts/explore.html', context)
@@ -46,5 +48,21 @@ def postDetail(request,pk):
         'user_image':post.user.profile.profile_image.url,
         'user_name':post.user.profile.name,
         'description': post.description,
+        'comments': fetchComments(request, post)
     }
     return JsonResponse(data)
+
+@login_required(login_url='login')
+def addComment(request,pk):
+    if request.method == 'POST':
+        post = Post.objects.get(id=pk)
+        form = CommentForm(request.POST)
+        comment = form.save(commit=False)
+        comment.post = post
+        comment.user = request.user
+        comment.save()
+
+        
+        comments = fetchComments(request,post)
+    
+    return JsonResponse(comments)
