@@ -18,6 +18,8 @@ class Post(models.Model):
     def __str__(self):
         return self.description
 
+    class Meta:
+        ordering = ['-created']
 
 class Tag(models.Model):
     name = models.CharField(max_length=200)
@@ -31,7 +33,7 @@ class Tag(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True)
-    comment = models.TextField(blank=True, null=True)
+    comment = models.CharField(max_length=200, blank=True, null=True)
     post = models.ForeignKey('Post', on_delete=models.CASCADE, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
@@ -49,4 +51,12 @@ class Like(models.Model):
                           primary_key=True, editable=False)
 
     def __str__(self):
-        return self.post
+        return self.post.id
+class Follow(models.Model):
+    follower =  models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="following")
+    followee =  models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name="followers")
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
