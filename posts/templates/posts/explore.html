@@ -23,7 +23,7 @@
                             <div class="absolut absolute bottom-0 flex items-center justify-between px-4 py-3 space-x-2 text-white w-full custom-overly1">   
                                 <a href="#">{{post.user.profile.name}} </a>  
                                 <div class="flex space-x-3">  
-                                <a href="#" class="flex items-center"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  150 </a>
+                                <a data-postid="{{post.id}}" href="{% url 'add-like' post.id%}" class="flex items-center like-post"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  {{post.like_set.all|length}} </a>
                                 </div>        
                             </div>
                         </div>
@@ -43,8 +43,8 @@
                                         {{post.user.profile.name}}  
                                     </a>
                                     <div class="flex space-x-3">
-                                        <a href="#" class="flex items-center">
-                                            <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon> 150
+                                        <a data-postid="{{post.id}}"  href="{% url 'add-like' post.id%}" class="flex items-center like-post">
+                                            <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon> {{post.like_set.all|length}}
                                         </a>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                             <div class="absolut absolute bottom-0 flex items-center justify-between px-4 py-3 space-x-2 text-white w-full custom-overly1">   
                                 <a href="#">{{post.user.profile.name}}  </a>  
                                 <div class="flex space-x-3">  
-                                <a href="#" class="flex items-center"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  150 </a>
+                                <a data-postid="{{post.id}}"  href="{% url 'add-like' post.id%}" class="flex items-center like-post"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  {{post.like_set.all|length}} </a>
                                 </div>        
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                             <div class="absolut absolute bottom-0 flex items-center justify-between px-4 py-3 space-x-2 text-white w-full custom-overly1">   
                                 <a href="#">{{post.user.profile.name}}  </a>  
                                 <div class="flex space-x-3">  
-                                <a href="#" class="flex items-center"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  150 </a>
+                                <a data-postid="{{post.id}}"  href="{% url 'add-like' post.id%}" class="flex items-center like-post"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  {{post.like_set.all|length}} </a>
                                 </div>        
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                             <div class="absolut absolute bottom-0 flex items-center justify-between px-4 py-3 space-x-2 text-white w-full custom-overly1">   
                                 <a href="#">{{post.user.profile.name}} </a>  
                                 <div class="flex space-x-3">  
-                                <a href="#" class="flex items-center"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  150 </a>
+                                <a data-postid="{{post.id}}"  href="{% url 'add-like' post.id%}" class="flex items-center like-post"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  {{post.like_set.all|length}} </a>
                                 </div>        
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                             <div class="absolut absolute bottom-0 flex items-center justify-between px-4 py-3 space-x-2 text-white w-full custom-overly1">   
                                 <a href="#">{{post.user.profile.name}}  </a>  
                                 <div class="flex space-x-3">  
-                                <a href="#" class="flex items-center"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  150 </a>
+                                <a data-postid="{{post.id}}"  href="{% url 'add-like' post.id%}" class="flex items-center like-post"> <ion-icon name="heart" class="mr-1 md hydrated" role="img" aria-label="heart"></ion-icon>  {{post.like_set.all|length}} </a>
                                 </div>        
                             </div>
                         </div>
@@ -112,11 +112,5 @@
                 {% endif %}
             {% endfor %}    
         </div>
-
-        <!-- Load more-->
-        <!-- <div class="flex justify-center mt-6">
-            <a href="#" class="bg-white font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white"> Load more ..</a>
-        </div> -->
-
     </div>
 {% endblock content %}

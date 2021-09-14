@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    $(document).on('click', '.user-post-detail', function(){
-        // $('.story-modal').empty();
+    $(document).on('click', '.user-post-detail', function(e){
+        e.preventDefault()
         var postId = $(this).data('postid');
         $('.add-post-comment').attr('data-postid', postId);
         $.ajax({
@@ -27,30 +27,8 @@ $(document).ready(function(){
           });
     });
 
-    $(document).on('submit', '.add-post-comment', function(e){
+    $(document).on('click', '.add-post-comment', function(e){
         e.preventDefault();
-        var post_id = $(this).data('postid'),
-            formData = new FormData($(this)[0]);
-
-        $.ajax({
-            url:"add-comment/"+post_id+"/",
-            method: 'POST',
-            data: formData,
-            contentType: false,
-        	cache: false,
-        	processData: false,
-        	success: function(data){
-                $(".add-post-comment").trigger("reset");
-                
-                var result = data.results,
-                    comments = '';
-
-                for (var i = 0; i < result.length; i++) {
-                    var record = result[i];
-                    comments +='<div class="flex flex-1 items-center space-x-2"> <img src="'+record.commenter_image+'" class="rounded-full w-8 h-8"> <div class="flex-1 p-2">'+record.comment+'</div> </div>'
-                }
-                $('.post-comments').empty().append(comments)
-            }
-        });
+        $(this).parents('.stats-section').find('form.add-comment-form input').focus()
     });
 });
