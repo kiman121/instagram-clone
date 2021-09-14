@@ -57,18 +57,13 @@
 
                 </div>
                 <div class="p-3 border-t dark:border-gray-600">
-                    <div class="bg-gray-200 dark:bg-gray-700 rounded-full rounded-md relative">
-                        <form class="add-post-comment" data-postid="" method="POST">
-                            {% csrf_token %}
-                            {{commentForm.comment}}
-                            <!-- <input type="text" placeholder="Add your Comment.." class="bg-transparent max-h-8 shadow-none"> -->
-                        
-                            <!-- <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
-                                <a href="#"> <i class="uil-image"></i></a>
-                                <a href="#"> <i class="uil-video"></i></a>
-                            </div> -->
-                            <input type="submit" value="Save">
-                        </form>
+                    <div class="bg-gray-200 dark:bg-gray-700 rounded-full rounded-md relative"> 
+                        <input type="text" placeholder="Add your Comment.." class="bg-transparent max-h-8 shadow-none"> 
+                    
+                        <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
+                            <a href="#"> <i class="uil-image"></i></a>
+                            <a href="#"> <i class="uil-video"></i></a>
+                        </div>
                     </div>
                 </div>
 
