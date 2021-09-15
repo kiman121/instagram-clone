@@ -1,2 +1,2 @@
 Hello {{name}}
-Welcome to the Moringa Tribune newsletter. You will find the most exciting news about Moringa School
+Welcome to the Instello. Your home of real life stories told my pictures

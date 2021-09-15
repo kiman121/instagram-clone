@@ -23,8 +23,18 @@ class Profile(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
 
-    def __str__(self):
-        return str(self.username)
+    def save_profile(self):
+        '''
+        Method that saves the Profile object
+        '''
+        self.save()
+
+    @classmethod
+    def update_profile(cls, record_id, update_value):
+        '''
+        Method that Updates a profile record
+        '''
+        cls.objects.filter(id=record_id).update(name=update_value)
 
 
 class Tag(models.Model):
